@@ -14,11 +14,8 @@ RUN echo -e "https://dl-cdn.alpinelinux.org/alpine/edge/testing\nhttps://dl-cdn.
 	gutenprint-cups \
 	ghostscript \
 	brlaser \
-	hplip \
 	avahi \
 	inotify-tools \
-	python3 \
-	python3-dev \
 	build-base \
 	wget \
 	rsync \

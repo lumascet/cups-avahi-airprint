@@ -3,13 +3,22 @@ version: '3.5'
 services:
   cups:
     container_name: cups
-    image: chuckcharlie/cups-avahi-airprint
-    #build: .
-    restart: always
+    #image: chuckcharlie/cups-avahi-airprint
+    build: .
+    restart: unless-stopped
     network_mode: "host"
     environment:
       CUPSADMIN: cups
       CUPSPASSWORD: cups
+      USB_DEVICE_ID: 04f9:01eb
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
     volumes:
-      - "./services:/services"
-      - "./config:/config"
+      - config:/config
+      - services:/services
+      - cups:/etc/cups
+
+volumes:
+    config:
+    services:
+    cups:
