@@ -52,9 +52,11 @@ fi
 
 while true; do
     if [ $DEVICE_CONNECTED_BEFORE -eq 0 ] && lsusb | grep -q "$USB_DEVICE_ID"; then
+        DEVICE_CONNECTED_BEFORE=1
         echo "USB device $USB_DEVICE_ID reconnected. Exiting script."
         exit 0
     elif [ $DEVICE_CONNECTED_BEFORE -eq 1 ] && ! lsusb | grep -q "$USB_DEVICE_ID"; then
+        DEVICE_CONNECTED_BEFORE=0
         echo "USB device $USB_DEVICE_ID disconnected. Waiting to reconnect."
     fi
     sleep 5
